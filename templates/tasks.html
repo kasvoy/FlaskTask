@@ -1,0 +1,6 @@
+{%extends "base.html"%} {%block title%}Your tasks{%endblock%} {%block content%}
+{%for task in tasks%}
+<h1>{{task.task_name}}</h1>
+<p>{{task.done}}</p>
+<p>Created on {{task.date_posted}}</p>
+{%endfor%} {%endblock%}
