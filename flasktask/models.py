@@ -13,13 +13,23 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
+    notes = db.relationship('Note')
     tasks = db.relationship('Task')
 
     def __repr__(self) -> str:
-        return f"User({self.username}, {self.email}, {self.password})"
+        return f"User({self.username}, {self.email})"
+
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(20), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    created_on = db.Column(db.DateTime, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20), nullable=False)
-    content = db.Column(db.Text, nullable=False)
+    title = db.Column(db.String(20), nullable=False)
+    todo = db.Column(db.Text, nullable=False)
+    created_on = db.Column(db.DateTime, nullable=False)
+    due_by = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

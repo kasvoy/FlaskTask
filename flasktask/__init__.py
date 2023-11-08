@@ -1,5 +1,5 @@
 from flask import Flask
-from . import auth, tasks
+from . import auth, notes_tasks
 
 
 
@@ -11,13 +11,13 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
     app.register_blueprint(auth.auth_bp)
-    app.register_blueprint(tasks.tasks_bp)
+    app.register_blueprint(notes_tasks.tasks_bp)
 
-    from .models import User, Task, db, login_manager
+    from .models import User, Note, Task, db, login_manager
 
     db.init_app(app)  
     login_manager.init_app(app)
-    
+
     login_manager.login_view = 'auth.login'
     login_manager.login_message_category = 'info'
 

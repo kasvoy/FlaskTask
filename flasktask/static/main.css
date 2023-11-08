@@ -1,0 +1,19 @@
+.btn-xd-primary {
+  --bs-btn-font-weight: 450;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0ed228;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #32d71c;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #32d71c;
+}
+
+.btn-xd-secondary {
+  --bs-btn-font-weight: 450;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #ac0ab2;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #c11dc7;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #c11dc7;
+}

@@ -1,0 +1,16 @@
+{%extends "base.html"%} {%block title%}Home{%endblock%} {%block content%} {%if
+current_user.is_authenticated%}
+<h4 align="center">Hello, {{current_user.username}}</h4>
+{%endif%}
+
+<div class="d-grid gap-2 col-6 mt-5 mx-auto">
+  <a
+    href="{{url_for('tasks.create_note')}}"
+    class="btn btn-xd-primary"
+    type="button"
+    >Create note</a
+  >
+  <button class="btn btn-xd-secondary" type="button">Create task</button>
+</div>
+
+{%endblock%}

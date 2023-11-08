@@ -41,7 +41,7 @@ def login():
             if request.args.get('next'):
                 return redirect(request.args.get('next'))
             else:
-                return redirect(url_for('tasks.tasks_page'))
+                return redirect(url_for('tasks.home'))
         else:
             flash(f"Wrong email or password", 'danger')
         
@@ -53,7 +53,7 @@ def logout():
     logout_user()
     flash('Sucessfully logged out', 'info')
 
-    return redirect(url_for('tasks.tasks_page'))
+    return redirect(url_for('tasks.home'))
 
 @auth_bp.route('/account')
 @login_required
