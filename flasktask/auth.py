@@ -21,7 +21,7 @@ def register():
         db.session.commit()
 
         flash(f"Account created for {form.username.data}.", 'success')
-        return redirect(url_for('tasks.tasks_page'))
+        return redirect(url_for('tasks.home'))
     
     return render_template('auth/register.html', form=form)
 
@@ -63,8 +63,6 @@ def account():
 @auth_bp.route('/users')
 def users_query():
     users = db.session.execute(db.select(User))
-    print(db.session.scalars(db.Select(User).where(User.id == int(6))).all())
-    
 
     return render_template('auth/query.html', users=users)
     

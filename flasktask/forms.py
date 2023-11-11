@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, DateField
-from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
+from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError, Optional
 from .models import User, db
 
 class RegistrationForm(FlaskForm):
     
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=12)])
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=25)])
     email = StringField('Email address', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
     confirm_password = PasswordField('Confirm password', validators=[EqualTo('password')])
@@ -34,7 +34,6 @@ class NoteForm(FlaskForm):
     create = SubmitField('Create note')
 
 class TaskForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
     todo= TextAreaField('To do', validators=[DataRequired()])
-    due_by = DateField('Due by', validators=[DataRequired()])
+    due_by = DateField('Due by', validators=[Optional()])
     create = SubmitField('Create task')

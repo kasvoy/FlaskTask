@@ -1,0 +1,32 @@
+{%extends "base.html"%} {%block title%}New task{%endblock%} {%block content%}
+
+<form method="POST">
+  <h3 align="center">New task</h3>
+  {{form.hidden_tag()}}
+
+  <div class="form-group mb-3">
+    {{form.todo.label (class="form-control-label")}} {%if form.todo.errors%}
+    {{form.todo(class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+      {%for error in form.todo.errors%}
+      <span>{{error}}</span>
+      {%endfor%}
+    </div>
+    {%else%} {{form.todo(class="form-control")}} {%endif%}
+  </div>
+
+  <div class="form-group mb-3">
+    {{form.due_by.label (class="form-control-label") + " (optional)"}} {%if
+    form.due_by.errors%} {{form.due_by(class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+      {%for error in form.due_by.errors%}
+      <span>{{error}}</span>
+      {%endfor%}
+    </div>
+    {%else%} {{form.due_by(class="form-control")}} {%endif%}
+  </div>
+
+  <div>{{form.create(class="btn btn-xd-secondary")}}</div>
+</form>
+
+{%endblock%}

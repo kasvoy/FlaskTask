@@ -1,0 +1,9 @@
+{%extends "base.html"%} {%block title%}Task {{task.id}}{%endblock%} {%block
+content%}
+<div class="container">
+  <p>{{task.todo}}</p>
+  {%if task.due_by%}
+  <h6>{{task.due_by}}</h6>
+</div>
+
+{%endif%} {%endblock%}

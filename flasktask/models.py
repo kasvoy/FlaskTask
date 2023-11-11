@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     def __repr__(self) -> str:
         return f"User({self.username}, {self.email})"
 
+
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(20), nullable=False)
@@ -26,10 +27,17 @@ class Note(db.Model):
     created_on = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+    def __repr__(self) -> str:
+        return f"Note({self.title}, {self.created_on}, {self.user_id})"
+
+
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(20), nullable=False)
     todo = db.Column(db.Text, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False)
-    due_by = db.Column(db.DateTime, nullable=False)
+    due_by = db.Column(db.DateTime, nullable=True)
+    is_done = db.Column(db.Boolean, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self) -> str:
+        return f"Task({self.todo}, {self.created_on}, {self.user_id}, {self.due_by})"
