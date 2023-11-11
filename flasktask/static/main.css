@@ -18,6 +18,16 @@
   --bs-btn-active-bg: #c11dc7;
 }
 
+.btn-unmark {
+  --bs-btn-font-weight: 450;
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #ac0ab27e;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #c11dc752;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #c11dc752;
+}
+
 .note-card {
   --bs-card-title-color: #000000;
   --bs-card-subtitle-color: #ffffff;
@@ -37,5 +47,16 @@
   --bs-card-border-radius: 10px;
   --bs-card-color: #000000;
   --bs-card-bg: #c11dc71a;
+  --bs-card-group-margin: 3;
+}
+
+.done-task-card {
+  --bs-card-title-color: #000000;
+  --bs-card-subtitle-color: #ffffff;
+  --bs-card-border-width: 2px;
+  --bs-card-border-color: #6d576d69;
+  --bs-card-border-radius: 10px;
+  --bs-card-color: #716e6e;
+  --bs-card-bg: #79557b25;
   --bs-card-group-margin: 3;
 }

@@ -40,8 +40,9 @@ current_user.is_authenticated%}
       </div>
       {%endfor%} {%endif%}
     </div>
+
     <div class="col-sm-4">
-      {%if tasks%} {%for task in tasks%}
+      {%if yet_done_tasks%} {%for task in yet_done_tasks%}
       <div class="card task-card mb-2" style="max-width: 800px">
         <div class="card-body">
           <h5 class="card-text">{{task.todo}}</h5>
@@ -49,11 +50,38 @@ current_user.is_authenticated%}
           <h6 class="card-subtitle mb-2 text-body-secondary">
             Due: {{task.due_by.strftime("%A, %d %B %Y")}}
           </h6>
-          {%endif%} {%if not task.is_done%}
-          <a href="#" class="btn btn-xd-secondary btn-sm">Mark as done</a>
-          {%else%}
-          <a href="#" class="btn btn-xd-secondary btn-sm">Unmark as done</a>
           {%endif%}
+          <a
+            href="{{url_for('tasks.switch_done', task_id=task.id)}}"
+            class="btn btn-xd-secondary btn-sm"
+            >Mark as done</a
+          >
+          <a
+            href="{{url_for('tasks.delete_task', task_id=task.id)}}"
+            class="btn btn-danger btn-sm"
+            >Delete</a
+          >
+        </div>
+      </div>
+      {%endfor%} {%endif%} {%if done_tasks%} {%for task in done_tasks%}
+      <div class="card done-task-card mb-2" style="max-width: 800px">
+        <div class="card-body">
+          <s><h5 class="card-text">{{task.todo}}</h5></s>
+          {%if task.due_by%}
+          <p class="card-subtitle mb-2 text-body-secondary">
+            Due: {{task.due_by.strftime("%A, %d %B %Y")}}
+          </p>
+          {%endif%}
+          <a
+            href="{{url_for('tasks.switch_done', task_id=task.id)}}"
+            class="btn btn-unmark btn-sm"
+            >Unmark as done</a
+          >
+          <a
+            href="{{url_for('tasks.delete_task', task_id=task.id)}}"
+            class="btn btn-danger btn-sm"
+            >Delete</a
+          >
         </div>
       </div>
       {%endfor%} {%endif%}

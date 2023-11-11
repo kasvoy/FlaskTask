@@ -40,4 +40,4 @@ class Task(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self) -> str:
-        return f"Task({self.todo}, {self.created_on}, {self.user_id}, {self.due_by})"
+        return f"Task({self.todo}, {self.created_on}, {self.user_id}, {self.due_by}, done:{self.is_done})"
