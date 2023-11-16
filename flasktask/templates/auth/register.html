@@ -48,7 +48,14 @@
     {%else%} {{form.confirm_password(class="form-control")}} {%endif%}
   </div>
 
-  <div>{{form.submit(class="btn btn-primary")}}</div>
+  <div>{{form.submit(class="btn btn-xd-secondary")}}</div>
+  <div class="text-muted mt-2">
+    <small>
+      Already have an account?<a href="{{url_for('auth.login')}}">
+        Click here to login.</a
+      >
+    </small>
+  </div>
 </form>
 
 {%endblock%}

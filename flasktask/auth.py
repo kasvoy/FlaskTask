@@ -53,7 +53,7 @@ def logout():
     logout_user()
     flash('Sucessfully logged out', 'info')
 
-    return redirect(url_for('tasks.home'))
+    return redirect(url_for('auth.login'))
 
 @auth_bp.route('/account')
 @login_required

@@ -9,7 +9,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email address', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
     confirm_password = PasswordField('Confirm password', validators=[EqualTo('password')])
-    submit = SubmitField('Register!')
+    submit = SubmitField('Register')
 
     def validate_username(self, username):
         if db.session.scalars(db.Select(User).where(User.username == username.data)).first():
@@ -25,15 +25,15 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
-    submit = SubmitField('Log in!')
+    submit = SubmitField('Log in')
 
 
 class NoteForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    create = SubmitField('Create note')
+    create = SubmitField('Submit')
 
 class TaskForm(FlaskForm):
     todo= TextAreaField('To do', validators=[DataRequired()])
     due_by = DateField('Due by', validators=[Optional()])
-    create = SubmitField('Create task')
+    create = SubmitField('Submit')
